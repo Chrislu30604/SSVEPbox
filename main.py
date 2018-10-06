@@ -1,5 +1,6 @@
 import sys
-from ssvepbox import *
+from scipy.io import loadmat
+from ssvepbox import CNNtorch
 
 
 def main():
@@ -7,8 +8,9 @@ def main():
         print("Usage:", sys.argv[0], "file")
         sys.exit(1)
 
-    with open(sys.argv[1]) as f:
-        text = f.read()
+    text = loadmat(sys.argv[1])
+    datasets = text['Data']['EEG'][0][0]
+
 
 if __name__ == "__main__":
     main()
